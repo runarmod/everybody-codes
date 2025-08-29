@@ -8,9 +8,8 @@ test_inputs = [
 
 
 def get_input(part: int, test: bool = False) -> str:
-    if test:
-        return test_inputs[part - 1]
-    return open(f"round{part}.txt", "r").read().strip()
+    data = open(f"round{part}.txt", "r").read() if not test else test_inputs[part - 1]
+    return data.strip()
 
 
 def part1(test: bool = False):
@@ -27,11 +26,16 @@ def part3(test: bool = False):
 
 def main():
     start = time.perf_counter()
-    for test in [True, False]:
-        print(f"{['', '(TEST) '][test]}Part 1:", part1(test))
-        print(f"{['', '(TEST) '][test]}Part 2:", part2(test))
-        print(f"{['', '(TEST) '][test]}Part 3:", part3(test))
-        print()
+    print("(TEST) Part 1:", part1(True))
+    print("(TEST) Part 2:", part2(True))
+    print("(TEST) Part 3:", part3(True))
+    print()
+
+    print("Part 1:", part1(True))
+    print("Part 2:", part2(True))
+    print("Part 3:", part3(True))
+    print()
+
     print("Time:", time.perf_counter() - start)
 
 
