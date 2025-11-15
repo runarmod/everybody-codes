@@ -1,4 +1,5 @@
 *.txt
+correct_part_*
 
 # Python-generated files
 __pycache__/
