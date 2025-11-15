@@ -3,9 +3,11 @@ import re
 import time
 
 from ecd import get_inputs, submit
+from PIL import Image
 
 EVENT = 2025
 QUEST = 2
+VISUALIZE = True
 
 assert EVENT is not None
 assert QUEST is not None
@@ -47,6 +49,7 @@ def part2(test: bool = False):
     corner = re.findall(r"-?\d+", data)
     corner = int(corner[0]) + int(corner[1]) * 1j
 
+    image = Image.new("1", (101, 101), "white")
     s = 0
     for offset_x in range(0, 1001, 10):
         for offset_y in range(0, 1001, 10):
@@ -61,6 +64,9 @@ def part2(test: bool = False):
                     break
             else:
                 s += 1
+                image.putpixel((offset_x // 10, offset_y // 10), 0)
+    if VISUALIZE:
+        image.save(f"2025_02{'_test' if test else ''}_part2.png")
     return s
 
 
@@ -69,6 +75,7 @@ def part3(test: bool = False):
     corner = re.findall(r"-?\d+", data)
     corner = int(corner[0]) + int(corner[1]) * 1j
 
+    image = Image.new("1", (1001, 1001), "white")
     s = 0
     for offset_x in range(1001):
         for offset_y in range(1001):
@@ -83,6 +90,9 @@ def part3(test: bool = False):
                     break
             else:
                 s += 1
+                image.putpixel((offset_x, offset_y), 0)
+    if VISUALIZE:
+        image.save(f"2025_02{'_test' if test else ''}_part3.png")
     return s
 
 
