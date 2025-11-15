@@ -24,35 +24,39 @@ def get_input(part: int, test: bool = False) -> str:
     return get_inputs(event=EVENT, quest=QUEST)[str(part)]
 
 
+def loop(result: complex, divider: int, adder: complex) -> complex:
+    result *= result
+    result /= divider
+    result = int(result.real) + int(result.imag) * 1j
+    result += adder
+    return result
+
+
 def part1(test: bool = False):
     data = get_input(1, test)
     a = re.findall(r"-?\d+", data)
-    a = [int(a[0]), int(a[1])]
-    result = [0, 0]
+    a = int(a[0]) + int(a[1]) * 1j
+    result = 0j + 0
     for _ in range(3):
-        result = [result[0] ** 2 - result[1] ** 2, result[0] * result[1] * 2]
-        result = [result[0] // 10, result[1] // 10]
-        result = [result[0] + a[0], result[1] + a[1]]
-    return f"[{result[0]},{result[1]}]"
+        result = loop(result, 10, a)
+    return f"[{int(result.real)},{int(result.imag)}]"
 
 
 def part2(test: bool = False):
     data = get_input(2, test)
     corner = re.findall(r"-?\d+", data)
-    corner = [int(corner[0]), int(corner[1])]
-    opposite_corner = [corner[0] + 1000, corner[1] + 1000]
+    corner = int(corner[0]) + int(corner[1]) * 1j
 
     s = 0
-    for point_x in range(corner[0], opposite_corner[0] + 1, 10):
-        for point_y in range(corner[1], opposite_corner[1] + 1, 10):
-            result = [0, 0]
+    for offset_x in range(0, 1001, 10):
+        for offset_y in range(0, 1001, 10):
+            point = corner + offset_x + offset_y * 1j
+            result = 0j + 0
             for _ in range(100):
-                result = [result[0] ** 2 - result[1] ** 2, result[0] * result[1] * 2]
-                result = [int(result[0] / 100000), int(result[1] / 100000)]
-                result = [result[0] + point_x, result[1] + point_y]
+                result = loop(result, 100_000, point)
                 if not (
-                    -1000000 <= result[0] <= 1000000
-                    and -1000000 <= result[1] <= 1000000
+                    -1000000 <= result.real <= 1000000
+                    and -1000000 <= result.imag <= 1000000
                 ):
                     break
             else:
@@ -63,19 +67,18 @@ def part2(test: bool = False):
 def part3(test: bool = False):
     data = get_input(3, test)
     corner = re.findall(r"-?\d+", data)
-    corner = [int(corner[0]), int(corner[1])]
-    opposite_corner = [corner[0] + 1000, corner[1] + 1000]
+    corner = int(corner[0]) + int(corner[1]) * 1j
 
     s = 0
-    for point_x in range(corner[0], opposite_corner[0] + 1, 1):
-        for point_y in range(corner[1], opposite_corner[1] + 1, 1):
-            result_x, result_y = [0, 0]
+    for offset_x in range(1001):
+        for offset_y in range(1001):
+            point = corner + offset_x + offset_y * 1j
+            result = 0j + 0
             for _ in range(100):
-                result_x, result_y = result_x**2 - result_y**2, result_x * result_y * 2
-                result_x, result_y = int(result_x / 100000), int(result_y / 100000)
-                result_x, result_y = result_x + point_x, result_y + point_y
+                result = loop(result, 100_000, point)
                 if not (
-                    -1000000 <= result_x <= 1000000 and -1000000 <= result_y <= 1000000
+                    -1000000 <= result.real <= 1000000
+                    and -1000000 <= result.imag <= 1000000
                 ):
                     break
             else:
