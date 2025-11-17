@@ -9,6 +9,7 @@ dependencies = [
     "everybody-codes-data>=0.4",
     "pillow>=11.3.0",
     "sympy>=1.14.0",
+    "tqdm>=4.67.1",
 ]
 
 [tool.ruff.lint.per-file-ignores]
