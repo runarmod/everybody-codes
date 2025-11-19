@@ -61,7 +61,7 @@ def spin_wheel(ranges: list[range], index: int) -> int:
     s = 0
     for r in ranges:
         s += len(r)
-        if s > index:
+        if s >= index:
             too_far = s - index
             return list(r)[-too_far]
     return None
