@@ -26,7 +26,7 @@ def get_input(part: int, test: bool = False) -> str:
 
 
 def count_blocks(nums: Iterable[int], length: int):
-    return sum(len(range(num - 1, length, num)) for num in nums)
+    return sum(length // num for num in nums)
 
 
 def part1(test: bool = False):
