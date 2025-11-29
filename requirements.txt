@@ -103,9 +103,9 @@ cryptography==46.0.3 \
     --hash=sha256:ef639cb3372f69ec44915fafcd6698b6cc78fbe0c2ea41be867f6ed612811963 \
     --hash=sha256:f260d0d41e9b4da1ed1e0f1ce571f97fe370b152ab18778e9e8f67d6af432018
     # via everybody-codes-data
-everybody-codes-data==0.4 \
-    --hash=sha256:04ef12bb063c26e22f714e49d6875bdad73c66d612cd88cc2bbba9394cf40a1c \
-    --hash=sha256:ab61731e3589eb05f15353d71588ccac49c542410751ef6129b099a3cbb1b198
+everybody-codes-data==0.5 \
+    --hash=sha256:d676aa8896341d623be13b22845baa66bbc20abb6bba6bb57f528653a2477e38 \
+    --hash=sha256:e2a0933f1993ee12e0d9b7404ae274795b51b69c0c4084458e6e91ebdc7584af
     # via everybody-codes
 mpmath==1.3.0 \
     --hash=sha256:7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f \

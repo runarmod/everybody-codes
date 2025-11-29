@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "colorama>=0.4.6",
-    "everybody-codes-data>=0.4",
+    "everybody-codes-data>=0.5",
     "networkx>=3.5",
     "pillow>=11.3.0",
     "sympy>=1.14.0",
