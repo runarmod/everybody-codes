@@ -1,6 +1,6 @@
-from itertools import combinations
 import re
 import time
+from itertools import combinations
 from typing import Iterable
 
 from ecd import get_inputs
@@ -62,7 +62,7 @@ def part3(test: bool = False):
     data = get_input(3, test)
     nums = list(map(int, re.findall(r"-?\d+", data)))
     nails = 256 if not test else 8
-    strings = list()
+    strings = []
     for n1, n2 in zip(nums, nums[1:]):
         strings.append((min(n1, n2), max(n1, n2)))
 

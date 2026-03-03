@@ -1,7 +1,7 @@
-from decimal import Decimal
 import math
 import re
 import time
+from decimal import Decimal
 
 from ecd import get_inputs
 

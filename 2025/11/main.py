@@ -1,6 +1,6 @@
-from itertools import count
 import re
 import time
+from itertools import count
 
 from ecd import get_inputs
 
