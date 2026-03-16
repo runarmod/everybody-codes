@@ -137,7 +137,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "colorama", specifier = ">=0.4.6" },
-    { name = "everybody-codes-data", git = "ssh://git@github.com/runarmod/everybody-codes-data.git?branch=new-api" },
+    { name = "everybody-codes-data", specifier = ">=0.6" },
     { name = "networkx", specifier = ">=3.5" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "sympy", specifier = ">=1.14.0" },
@@ -146,11 +146,15 @@ requires-dist = [
 
 [[package]]
 name = "everybody-codes-data"
-version = "0.5"
-source = { git = "ssh://git@github.com/runarmod/everybody-codes-data.git?branch=new-api#1247712e0aa587b78d374aac2cf24f27b6d04446" }
+version = "0.6"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cryptography" },
     { name = "urllib3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/bf/95/4e5b53ef15ba73600abcde3624facac461d1bbcfa7943d7e44dbe2e3638f/everybody_codes_data-0.6.tar.gz", hash = "sha256:fa32bd766adb185a296cd28f42cc57f729eb7ca4f499fe1aab93b9a6a214ece1", size = 8363, upload-time = "2026-03-16T18:31:55.149Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/76/59/ea86fa6a89e108aee150b035c48c2aef84ea67c899022b640cd9161dc9e1/everybody_codes_data-0.6-py3-none-any.whl", hash = "sha256:dfe71660650026d22c4f7be85d60f9aad3c45a6c4722f0da7d32ecd4048d0a41", size = 7234, upload-time = "2026-03-16T18:31:54.078Z" },
 ]
 
 [[package]]
