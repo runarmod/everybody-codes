@@ -128,6 +128,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "colorama" },
     { name = "everybody-codes-data" },
+    { name = "more-itertools" },
     { name = "networkx" },
     { name = "pillow" },
     { name = "sympy" },
@@ -138,6 +139,7 @@ dependencies = [
 requires-dist = [
     { name = "colorama", specifier = ">=0.4.6" },
     { name = "everybody-codes-data", specifier = ">=0.6" },
+    { name = "more-itertools", specifier = ">=11.0.2" },
     { name = "networkx", specifier = ">=3.5" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "sympy", specifier = ">=1.14.0" },
@@ -155,6 +157,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/bf/95/4e5b53ef15ba73600abcde3624facac461d1bbcfa7943d7e44dbe2e3638f/everybody_codes_data-0.6.tar.gz", hash = "sha256:fa32bd766adb185a296cd28f42cc57f729eb7ca4f499fe1aab93b9a6a214ece1", size = 8363, upload-time = "2026-03-16T18:31:55.149Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/76/59/ea86fa6a89e108aee150b035c48c2aef84ea67c899022b640cd9161dc9e1/everybody_codes_data-0.6-py3-none-any.whl", hash = "sha256:dfe71660650026d22c4f7be85d60f9aad3c45a6c4722f0da7d32ecd4048d0a41", size = 7234, upload-time = "2026-03-16T18:31:54.078Z" },
+]
+
+[[package]]
+name = "more-itertools"
+version = "11.0.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/f7/139d22fef48ac78127d18e01d80cf1be40236ae489769d17f35c3d425293/more_itertools-11.0.2.tar.gz", hash = "sha256:392a9e1e362cbc106a2457d37cabf9b36e5e12efd4ebff1654630e76597df804", size = 144659, upload-time = "2026-04-09T15:01:33.297Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cb/98/6af411189d9413534c3eb691182bff1f5c6d44ed2f93f2edfe52a1bbceb8/more_itertools-11.0.2-py3-none-any.whl", hash = "sha256:6e35b35f818b01f691643c6c611bc0902f2e92b46c18fffa77ae1e7c46e912e4", size = 71939, upload-time = "2026-04-09T15:01:32.21Z" },
 ]
 
 [[package]]
