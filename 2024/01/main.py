@@ -1,4 +1,4 @@
-from itertools import batched
+from more_itertools import batched
 
 
 def task(string: str, sub_length: int):

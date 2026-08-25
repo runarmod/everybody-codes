@@ -1,10 +1,10 @@
 import re
 import time
 from collections import defaultdict
-from itertools import batched
 from math import ceil
 
 from ecd import get_inputs
+from more_itertools import batched
 
 EVENT = 2025
 QUEST = 19

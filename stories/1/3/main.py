@@ -1,8 +1,8 @@
 import math
 import re
 import time
-from itertools import batched
 
+from more_itertools import batched
 from sympy.ntheory.modular import crt
 
 test_inputs = [
