@@ -3,6 +3,7 @@ import time
 from collections import deque
 
 from ecd import get_inputs
+from PIL import Image
 
 EVENT = 4
 QUEST = 2
@@ -32,6 +33,36 @@ def nums(line: str) -> tuple[int, ...]:
     return tuple(map(int, re.findall(r"-?\d+", line)))
 
 
+def coords_to_image(
+    coords: set[tuple[int, int]],
+    name: str,
+    green_coords: set[tuple[int, int]] | None = None,
+):
+    all_coords = set(coords)
+    if green_coords:
+        all_coords |= green_coords
+
+    if not all_coords:
+        image = Image.new("RGB", (1, 1), "white")
+        image.save(name + ".png")
+        return image
+
+    xs = [x for x, _ in all_coords]
+    ys = [y for _, y in all_coords]
+    min_x, max_x = min(xs), max(xs)
+    min_y, max_y = min(ys), max(ys)
+
+    image = Image.new("RGB", (max_x - min_x + 1, max_y - min_y + 1), "white")
+    pixels = image.load()
+    for x, y in coords:
+        pixels[x - min_x, max_y - y] = (0, 0, 0)
+    if green_coords:
+        for x, y in green_coords:
+            pixels[x - min_x, max_y - y] = (0, 255, 0)
+    image.save(name + ".png")
+    return image
+
+
 def get_input(part: int, test: bool = False) -> str:
     if test:
         return test_inputs[part - 1]
@@ -51,6 +82,9 @@ def part1(test: bool = False):
         curr = beacons[b]
         pos = (pos[0] + curr[0]) // 2, (pos[1] + curr[1]) // 2
         lights.add(pos)
+
+    coords_to_image(lights, "part1" + ("_test" if test else ""))
+
     return len(lights)
 
 
@@ -73,6 +107,10 @@ def part2(test: bool = False):
         new_lights.add((light[0] - 1, light[1]))
         new_lights.add((light[0], light[1] + 1))
         new_lights.add((light[0], light[1] - 1))
+
+    coords_to_image(
+        lights, "part2" + ("_test" if test else ""), green_coords=new_lights - lights
+    )
 
     return len(new_lights - lights)
 
@@ -101,6 +139,10 @@ def part3(test: bool = False):
         new_lights.add((light[0] - 1, light[1]))
         new_lights.add((light[0], light[1] + 1))
         new_lights.add((light[0], light[1] - 1))
+
+    coords_to_image(
+        lights, "part3" + ("_test" if test else ""), green_coords=new_lights - lights
+    )
 
     return len(new_lights - lights)
 
