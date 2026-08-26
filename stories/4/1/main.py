@@ -59,6 +59,22 @@ def part2(test: bool = False):
     return s
 
 
+def non_crossing_jump(
+    lo1: int, hi1: int, jumps: set[tuple[int, int]], actual_to: int, visited: set[int]
+) -> bool:
+    if actual_to < 0:
+        return False
+    if actual_to in visited:
+        return False
+
+    for lo2, hi2 in jumps:
+        if not (lo2 < lo1 < hi2) and (lo2 < hi1 < hi2):
+            return False
+        if (lo2 < lo1 < hi2) and not (lo2 < hi1 < hi2):
+            return False
+    return True
+
+
 def part3(test: bool = False):
     data = get_input(3, test)
     s = 0
@@ -69,30 +85,19 @@ def part3(test: bool = False):
         visited = {0}
         even = True
 
-        def valid_jump(lo1, hi1, jumps, actual_to) -> bool:
-            if actual_to < 0:
-                return False
-            if actual_to in visited:
-                return False
-
-            for lo2, hi2 in jumps:
-                if not (lo2 < lo1 < hi2) and (lo2 < hi1 < hi2):
-                    return False
-                if (lo2 < lo1 < hi2) and not (lo2 < hi1 < hi2):
-                    return False
-            return True
-
         for b in a.split(","):
             x = int(b)
-            if valid_jump(c - x, c, even_jumps if even else odd_jumps, c - x):
+            if non_crossing_jump(
+                c - x, c, even_jumps if even else odd_jumps, c - x, visited
+            ):
                 jumps = even_jumps if even else odd_jumps
                 jumps.add((c - x, c))
                 c -= x
                 even = not even
             else:
                 counter = 0
-                while not valid_jump(
-                    c, c + x, even_jumps if even else odd_jumps, c + x
+                while not non_crossing_jump(
+                    c, c + x, even_jumps if even else odd_jumps, c + x, visited
                 ):
                     if counter > 500:  # NOTE: Might need to be increased
                         break
