@@ -3,7 +3,7 @@ import time
 
 from ecd import get_inputs, submit
 
-EVENT = 2025
+EVENT = 2026
 QUEST = None
 
 assert EVENT is not None
@@ -19,23 +19,32 @@ test_inputs = [
 def get_input(part: int, test: bool = False) -> str:
     if test:
         return test_inputs[part - 1]
-
     return get_inputs(event=EVENT, quest=QUEST)[str(part)]
 
 
 def part1(test: bool = False):
-    return None
     data = get_input(1, test)
+    ans = 0
+
+    print(data)
+
+    return ans
 
 
 def part2(test: bool = False):
     return None
     data = get_input(2, test)
+    ans = 0
+
+    return ans
 
 
 def part3(test: bool = False):
     return None
     data = get_input(3, test)
+    ans = 0
+
+    return ans
 
 
 def main():
